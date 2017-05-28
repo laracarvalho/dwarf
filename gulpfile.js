@@ -49,7 +49,7 @@ gulp.task('imagemin', function() {
 
 // Browser Sync & Live Reload
 
-gulp.task('browser-sync', function() {
+gulp.task('browserSync', function() {
     browserSync.init({
         server: {
             baseDir: "./"
@@ -67,4 +67,4 @@ gulp.task('watch', function() {
 
 ///// DEFAULT /////
 
-gulp.task('default', ['browserSync', 'styles']);
+gulp.task('default', ['browserSync']);
