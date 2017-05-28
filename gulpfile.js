@@ -15,7 +15,7 @@
 
 const gulp = require('gulp');
 const sass = require('gulp-sass');
-const uglify = require('gulp-minify');
+const minify = require('gulp-minify');
 const cssnano = require('gulp-cssnano');
 const imagemin = require('gulp-imagemin');
 const browserSync = require('browser-sync').create();
@@ -35,7 +35,7 @@ gulp.task('sass', function() {
 
 gulp.task('minify', function() {
 	gulp.src('src/js/*.js')
-		.pipe(uglify())
+		.pipe(minify())
 		.pipe(gulp.dest('dist/js'));
 });
 
@@ -67,4 +67,8 @@ gulp.task('watch', function() {
 
 ///// DEFAULT /////
 
-gulp.task('default', ['browserSync']);
+gulp.task('default', ['browserSync'], function() {
+	gulp.watch('src/scss/*.scss', ['sass']);
+	gulp.watch('src/js/*.js', ['minify']);
+	gulp.watch('src/images/*', ['imagemin']);
+});
